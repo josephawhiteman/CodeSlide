@@ -7,3 +7,5 @@ managing business logic in one code base whereby allowing different implementati
 Code slide is a code generation utility utilizing XML and XSLT templates. The current Version is a Desktop App that allows for the configuration of project specific information I.E. Target Language, Pattern Implementation. This utility can read the database schema and generate the XML representation of the Entities and Relations between them.
 
 It utilized Reflection in conjunction with Aspect Oriented programming to generate the UI. This pattern is similar to how frameworks like Spring and Hibernate map object properties to the database. Currently this implementation has the attribute connotations embedded in the Entity object source which at some time should be moved to an external XML configuration file.
+
+Modified June 14 2012
