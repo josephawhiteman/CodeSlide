@@ -1,4 +1,4 @@
 CodeSlide
 =========
 
-Code Slide and avalanche of code
+Code Slide an avalanche of code
