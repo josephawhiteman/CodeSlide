@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SchemaReader" targetNamespace="http://tempuri.org/SchemaReader.xsd" xmlns:mstns="http://tempuri.org/SchemaReader.xsd" xmlns="http://tempuri.org/SchemaReader.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="MenuMasterConnectionString" ConnectionStringObject="" IsAppSettingsProperty="True" Modifier="Assembly" Name="MenuMasterConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.CodeGenerator.Properties.Settings.GlobalReference.Default.MenuMasterConnectionString" Provider="System.Data.SqlClient">
+          </Connection>
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="EntitiesTableAdapter" GeneratorDataComponentClassName="EntitiesTableAdapter" Name="Entities" UserDataComponentName="EntitiesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>
+                      ;WITH schemas(schemaname, remain)
+                      as (
+                      SELECT    left(@schmas , isnull(nullif(CHARINDEX(',',@schmas),0),len(@schmas)+1)-1)
+                      as schemaname
+                      ,  right(@schmas, len(@schmas) - isnull(nullif(CHARINDEX(',',@schmas),0),len(@schmas)) )
+                      as remain
+                      UNION  ALL
+                      SELECT left(schemas.remain , isnull(nullif(CHARINDEX(',',schemas.remain),0),len(schemas.remain)+1)-1)
+                      as schemaname
+                      ,  right(schemas.remain, len(schemas.remain) - isnull(nullif(CHARINDEX(',',schemas.remain),0),len(schemas.remain)) )
+                      as remain
+                      FROM schemas Where isnull(len(schemas.remain),0) &gt; 0
+                      )
+                      , TableList (TABLE_CATALOG, TABLE_SCHEMA, TABLE_NAME, TABLE_TYPE, schemaname)
+                      AS (
+                      SELECT     TABLE_CATALOG
+                      ,TABLE_SCHEMA
+                      , TABLE_NAME
+                      ,TABLE_TYPE
+                      ,schemas.schemaname
+                      FROM      INFORMATION_SCHEMA.TABLES tabs
+                      INNER JOIN schemas on schemas.schemaname = tabs.TABLE_SCHEMA
+                      WHERE ( isnull(@includeTable,1) = 1 AND TABLE_TYPE = 'BASE TABLE')
+                      or ( isnull(@includeView,0) = 1 AND TABLE_TYPE = 'VIEW')
+                      )
+                      , Result
+                      as (
+                      Select TABLE_CATALOG
+                      ,TABLE_SCHEMA
+                      ,TABLE_NAME
+                      ,TABLE_TYPE
+
+                      , schemaname
+                      from TableList
+                      UNION
+                      select pkTabs.TABLE_CATALOG
+                      , pkTabs.TABLE_SCHEMA
+                      ,  pkTabs.TABLE_NAME
+                      ,  'BASE TABLE' TABLE_TYPE
+                      , pkTabs.TABLE_SCHEMA
+                      FROM [INFORMATION_SCHEMA].[REFERENTIAL_CONSTRAINTS] refs
+                      inner join [INFORMATION_SCHEMA].[TABLE_CONSTRAINTS] pkTabs on refs.UNIQUE_CONSTRAINT_NAME = pkTabs.CONSTRAINT_NAME
+                      inner join [INFORMATION_SCHEMA].[TABLE_CONSTRAINTS] fkTabs on refs.CONSTRAINT_NAME = fkTabs.CONSTRAINT_NAME
+                      INNER JOIN TableList tl ON tl.TABLE_CATALOG = fkTabs.TABLE_CATALOG AND tl.TABLE_SCHEMA = fkTabs.TABLE_SCHEMA AND tl.TABLE_NAME = fkTabs.TABLE_NAME
+                      Where ISNULL(@includeFK, 0) = 1
+                      )
+                      Select TABLE_CATALOG
+                      , TABLE_SCHEMA
+                      , TABLE_NAME
+                      , 'BASE TABLE' TABLE_TYPE
+                      , convert(varchar(55),newid()) AS OBJECT_ID
+                      , TABLE_SCHEMA
+                      FROM Result
+                    </CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="includeTable" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Boolean" Direction="Input" ParameterName="@includeTable" Precision="0" ProviderType="Bit" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="includeView" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Boolean" Direction="Input" ParameterName="@includeView" Precision="0" ProviderType="Bit" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="includeFK" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="Boolean" Direction="Input" ParameterName="@includeFK" Precision="0" ProviderType="Bit" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="False" AutogeneratedName="schmas" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@schmas" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TABLE_CATALOG" DataSetColumn="TABLE_CATALOG" />
+              <Mapping SourceColumn="TABLE_SCHEMA" DataSetColumn="TABLE_SCHEMA" />
+              <Mapping SourceColumn="TABLE_NAME" DataSetColumn="TABLE_NAME" />
+              <Mapping SourceColumn="TABLE_TYPE" DataSetColumn="TABLE_TYPE" />
+              <Mapping SourceColumn="OBJECT_ID" DataSetColumn="OBJECT_ID" />
+              <Mapping SourceColumn="schemaname" DataSetColumn="schemaname" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="FieldDefinitionsTableAdapter" GeneratorDataComponentClassName="FieldDefinitionsTableAdapter" Name="FieldDefinitions" UserDataComponentName="FieldDefinitionsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select col.table_name, col.column_name,col.Column_Default,col.is_nullable, col.Data_type
+      ,case when col.data_type = 'int' or col.data_type = 'datetime' then col.Numeric_precision else col.Character_maximum_length end as length
+      , pk.constraint_Name as Relationship
+	,CASE WHEN CHARINDEX('_', col.column_name ) &gt; 0 THEN SUBSTRING(col.column_name,0,CHARINDEX('_', col.column_name )) ELSE 'Default' END as category, newid() as object_id
+from  INFORMATION_SCHEMA.Columns col
+left Outer join INFORMATION_SCHEMA.KEY_COLUMN_USAGE pk on col.column_Name = pk.column_Name and col.Table_name = pk.Table_name and( pk.constraint_name like 'PK%' or pk.constraint_name like 'FK%') 
+</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="table_name" DataSetColumn="table_name" />
+              <Mapping SourceColumn="column_name" DataSetColumn="column_name" />
+              <Mapping SourceColumn="Column_Default" DataSetColumn="Column_Default" />
+              <Mapping SourceColumn="is_nullable" DataSetColumn="is_nullable" />
+              <Mapping SourceColumn="Data_type" DataSetColumn="Data_type" />
+              <Mapping SourceColumn="length" DataSetColumn="length" />
+              <Mapping SourceColumn="Relationship" DataSetColumn="Relationship" />
+              <Mapping SourceColumn="category" DataSetColumn="category" />
+              <Mapping SourceColumn="object_id" DataSetColumn="object_id" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByTableName" GenerateMethods="Both" GenerateShortCommands="True" GeneratorGetMethodName="GetDataByTableName" GeneratorSourceName="FillByTableName" GetMethodModifier="Public" GetMethodName="GetDataByTableName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataByTableName" UserSourceName="FillByTableName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select col.table_name, col.column_name,col.Column_Default,col.is_nullable, col.Data_type
+      ,case when col.data_type = 'int' or col.data_type = 'datetime' then col.Numeric_precision else col.Character_maximum_length end as length
+      , pk.constraint_Name as Relationship
+	,CASE WHEN CHARINDEX('_', col.column_name ) &gt; 0 THEN SUBSTRING(col.column_name,0,CHARINDEX('_', col.column_name )) ELSE 'Default' END as category
+, newid() as object_id
+from  INFORMATION_SCHEMA.Columns col
+left Outer join INFORMATION_SCHEMA.KEY_COLUMN_USAGE pk on col.column_Name = pk.column_Name 
+                                                      and col.Table_name = pk.Table_name 
+                                                      and col.Table_schema = pk.Table_schema 
+                                                      and( pk.constraint_name like 'PK%' or pk.constraint_name like 'FK%') 
+ Where col.table_name = @tableName
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="tableName" ColumnName="TABLE_NAME" DataSourceName="testcs.INFORMATION_SCHEMA.COLUMNS" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="@tableName" Precision="0" ProviderType="NVarChar" Scale="0" Size="256" SourceColumn="TABLE_NAME" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ChildRelationsTableAdapter" GeneratorDataComponentClassName="ChildRelationsTableAdapter" Name="ChildRelations" UserDataComponentName="ChildRelationsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT SO1.name AS FTable, SC1.name AS FCol, SO2.name AS RefTab, SC2.name AS RefCol, SC1.isNullable
+			FROM dbo.sysforeignkeys FK 
+			INNER JOIN dbo.syscolumns SC1 ON FK.fkeyid = SC1.id  AND FK.fkey = SC1.colid  
+			INNER JOIN dbo.syscolumns SC2 ON FK.rkeyid = SC2.id  AND FK.rkey = SC2.colid  
+			INNER JOIN dbo.sysobjects SO1 ON FK.fkeyid = SO1.id 
+			INNER JOIN dbo.sysobjects SO2 ON FK.rkeyid = SO2.id 
+
+</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="FTable" DataSetColumn="FTable" />
+              <Mapping SourceColumn="FCol" DataSetColumn="FCol" />
+              <Mapping SourceColumn="RefTab" DataSetColumn="RefTab" />
+              <Mapping SourceColumn="RefCol" DataSetColumn="RefCol" />
+              <Mapping SourceColumn="isNullable" DataSetColumn="isNullable" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByTableName" GenerateMethods="Both" GenerateShortCommands="True" GeneratorGetMethodName="GetDataByTableName" GeneratorSourceName="FillByTableName" GetMethodModifier="Public" GetMethodName="GetDataByTableName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataByTableName" UserSourceName="FillByTableName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT SO1.name AS FTable, SC1.name AS FCol, SO2.name AS RefTab, SC2.name AS RefCol, SC1.isNullable
+			FROM dbo.sysforeignkeys FK 
+			INNER JOIN dbo.syscolumns SC1 ON FK.fkeyid = SC1.id  AND FK.fkey = SC1.colid  
+			INNER JOIN dbo.syscolumns SC2 ON FK.rkeyid = SC2.id  AND FK.rkey = SC2.colid  
+			INNER JOIN dbo.sysobjects SO1 ON FK.fkeyid = SO1.id 
+			INNER JOIN dbo.sysobjects SO2 ON FK.rkeyid = SO2.id 
+			WHERE SO2.Name =@tableName
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="tableName" ColumnName="name" DataSourceName="MenuMaster.dbo.sysobjects" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="@tableName" Precision="0" Scale="0" Size="256" SourceColumn="RefTab" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ForeignRelationsTableAdapter" GeneratorDataComponentClassName="ForeignRelationsTableAdapter" Name="ForeignRelations" UserDataComponentName="ForeignRelationsTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT SO1.name AS FTable, SC1.name AS FCol, SO2.name AS RefTab, SC2.name AS RefCol
+, SC1.isNullable,cstName.Name AS ConstraintName
+FROM dbo.sysforeignkeys FK 
+INNER JOIN dbo.syscolumns SC1 ON FK.fkeyid = SC1.id  AND FK.fkey = SC1.colid  
+INNER JOIN dbo.syscolumns SC2 ON FK.rkeyid = SC2.id  AND FK.rkey = SC2.colid  
+INNER JOIN dbo.sysobjects SO1 ON FK.fkeyid = SO1.id 
+INNER JOIN dbo.sysobjects SO2 ON FK.rkeyid = SO2.id 
+inner join dbo.sysobjects cstName  on cstName.id  = FK.constid
+</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="FTable" DataSetColumn="FTable" />
+              <Mapping SourceColumn="FCol" DataSetColumn="FCol" />
+              <Mapping SourceColumn="RefTab" DataSetColumn="RefTab" />
+              <Mapping SourceColumn="RefCol" DataSetColumn="RefCol" />
+              <Mapping SourceColumn="isNullable" DataSetColumn="isNullable" />
+              <Mapping SourceColumn="ConstraintName" DataSetColumn="ConstraintName" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="True" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataBy" UserSourceName="FillBy">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT SO1.name AS FTable, SC1.name AS FCol, SO2.name AS RefTab, SC2.name AS RefCol
+, SC1.isNullable,cstName.Name AS ConstraintName
+FROM dbo.sysforeignkeys FK 
+INNER JOIN dbo.syscolumns SC1 ON FK.fkeyid = SC1.id  AND FK.fkey = SC1.colid  
+INNER JOIN dbo.syscolumns SC2 ON FK.rkeyid = SC2.id  AND FK.rkey = SC2.colid  
+INNER JOIN dbo.sysobjects SO1 ON FK.fkeyid = SO1.id 
+INNER JOIN dbo.sysobjects SO2 ON FK.rkeyid = SO2.id 
+inner join dbo.sysobjects cstName  on cstName.id  = FK.constid
+WHERE SO1.Name = @tableName</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="tableName" ColumnName="name" DataSourceName="testcs.dbo.sysobjects" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="@tableName" Precision="0" Scale="0" Size="256" SourceColumn="FTable" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="FillByAllChildTablesOnly" GenerateMethods="Both" GenerateShortCommands="True" GeneratorGetMethodName="GetDataByAllChildTablesOnly" GeneratorSourceName="FillByAllChildTablesOnly" GetMethodModifier="Public" GetMethodName="GetDataByAllChildTablesOnly" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataByAllChildTablesOnly" UserSourceName="FillByAllChildTablesOnly">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT SO1.name AS FTable, SO2.name AS RefTab,cstName.Name AS ConstraintName
+FROM dbo.sysforeignkeys FK 
+INNER JOIN dbo.syscolumns SC1 ON FK.fkeyid = SC1.id  AND FK.fkey = SC1.colid  
+INNER JOIN dbo.syscolumns SC2 ON FK.rkeyid = SC2.id  AND FK.rkey = SC2.colid  
+INNER JOIN dbo.sysobjects SO1 ON FK.fkeyid = SO1.id 
+INNER JOIN dbo.sysobjects SO2 ON FK.rkeyid = SO2.id 
+inner join dbo.sysobjects cstName  on cstName.id  = FK.constid
+WHERE SO2.Name = @TableName
+group by SO1.name , SO2.name,cstName.Name</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="TableName" ColumnName="name" DataSourceName="testcs.dbo.sysobjects" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="@TableName" Precision="0" Scale="0" Size="256" SourceColumn="RefTab" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KeyInfoTableAdapter" GeneratorDataComponentClassName="KeyInfoTableAdapter" Name="KeyInfo" UserDataComponentName="KeyInfoTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="MenuMaster.sys.sysobjects" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillKeyColumnInfo" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetDataKeyColumnInfo" GeneratorSourceName="FillKeyColumnInfo" GetMethodModifier="Public" GetMethodName="GetDataKeyColumnInfo" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="False" UserGetMethodName="GetDataKeyColumnInfo" UserSourceName="FillKeyColumnInfo">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT     SC1.name, SC1.id, SC1.xtype, SC1.parent_obj, SC1.type, PO.name AS TableName
+FROM         sys.sysobjects AS SC1 INNER JOIN
+                      sys.sysobjects AS PO ON SC1.parent_obj = PO.id
+WHERE     (SC1.type = 'k')</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="xtype" DataSetColumn="xtype" />
+              <Mapping SourceColumn="parent_obj" DataSetColumn="parent_obj" />
+              <Mapping SourceColumn="type" DataSetColumn="type" />
+              <Mapping SourceColumn="TableName" DataSetColumn="TableName" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="TABLE_CONSTRAINTSTableAdapter" GeneratorDataComponentClassName="TABLE_CONSTRAINTSTableAdapter" Name="TABLE_CONSTRAINTS" UserDataComponentName="TABLE_CONSTRAINTSTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="MenuMaster.INFORMATION_SCHEMA.TABLE_CONSTRAINTS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillContraints" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetDataContraints" GeneratorSourceName="FillContraints" GetMethodModifier="Public" GetMethodName="GetDataContraints" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataContraints" UserSourceName="FillContraints">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CONSTRAINT_CATALOG" DataSetColumn="CONSTRAINT_CATALOG" />
+              <Mapping SourceColumn="CONSTRAINT_SCHEMA" DataSetColumn="CONSTRAINT_SCHEMA" />
+              <Mapping SourceColumn="CONSTRAINT_NAME" DataSetColumn="CONSTRAINT_NAME" />
+              <Mapping SourceColumn="TABLE_CATALOG" DataSetColumn="TABLE_CATALOG" />
+              <Mapping SourceColumn="TABLE_SCHEMA" DataSetColumn="TABLE_SCHEMA" />
+              <Mapping SourceColumn="TABLE_NAME" DataSetColumn="TABLE_NAME" />
+              <Mapping SourceColumn="CONSTRAINT_TYPE" DataSetColumn="CONSTRAINT_TYPE" />
+              <Mapping SourceColumn="IS_DEFERRABLE" DataSetColumn="IS_DEFERRABLE" />
+              <Mapping SourceColumn="INITIALLY_DEFERRED" DataSetColumn="INITIALLY_DEFERRED" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="MenuMaster.INFORMATION_SCHEMA.TABLE_CONSTRAINTS" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByTableName" GenerateMethods="Both" GenerateShortCommands="True" GeneratorGetMethodName="GetDataByTableName" GeneratorSourceName="FillByTableName" GetMethodModifier="Public" GetMethodName="GetDataByTableName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataByTableName" UserSourceName="FillByTableName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+WHERE TABLE_NAME = @tableName</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="True" AutogeneratedName="tableName" ColumnName="TABLE_NAME" DataSourceName="MenuMaster.INFORMATION_SCHEMA.TABLE_CONSTRAINTS" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="@tableName" Precision="0" ProviderType="NVarChar" Scale="0" Size="256" SourceColumn="TABLE_NAME" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="CONSTRAINT_COLUMN_USAGETableAdapter" GeneratorDataComponentClassName="CONSTRAINT_COLUMN_USAGETableAdapter" Name="CONSTRAINT_COLUMN_USAGE" UserDataComponentName="CONSTRAINT_COLUMN_USAGETableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="MenuMaster.INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TABLE_CATALOG" DataSetColumn="TABLE_CATALOG" />
+              <Mapping SourceColumn="TABLE_SCHEMA" DataSetColumn="TABLE_SCHEMA" />
+              <Mapping SourceColumn="TABLE_NAME" DataSetColumn="TABLE_NAME" />
+              <Mapping SourceColumn="COLUMN_NAME" DataSetColumn="COLUMN_NAME" />
+              <Mapping SourceColumn="CONSTRAINT_CATALOG" DataSetColumn="CONSTRAINT_CATALOG" />
+              <Mapping SourceColumn="CONSTRAINT_SCHEMA" DataSetColumn="CONSTRAINT_SCHEMA" />
+              <Mapping SourceColumn="CONSTRAINT_NAME" DataSetColumn="CONSTRAINT_NAME" />
+            </Mappings>
+            <Sources>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="MenuMaster.INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE" DbObjectType="View" FillMethodModifier="Public" FillMethodName="FillByConstraintName" GenerateMethods="Both" GenerateShortCommands="True" GeneratorGetMethodName="GetDataByConstraintName" GeneratorSourceName="FillByConstraintName" GetMethodModifier="Public" GetMethodName="GetDataByConstraintName" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetDataByConstraintName" UserSourceName="FillByConstraintName">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>select * from INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE Where Constraint_Name = @ConstraintName</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="False" AutogeneratedName="ConstraintName" ColumnName="CONSTRAINT_NAME" DataSourceName="MenuMaster.INFORMATION_SCHEMA.CONSTRAINT_COLUMN_USAGE" DataTypeServer="sysname" DbType="String" Direction="Input" ParameterName="@ConstraintName" Precision="0" ProviderType="NVarChar" Scale="0" Size="256" SourceColumn="CONSTRAINT_NAME" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SCHEMATATableAdapter" GeneratorDataComponentClassName="SCHEMATATableAdapter" Name="SCHEMATA" UserDataComponentName="SCHEMATATableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="testcs.INFORMATION_SCHEMA.SCHEMATA" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT CATALOG_NAME, SCHEMA_NAME, SCHEMA_OWNER, DEFAULT_CHARACTER_SET_CATALOG, DEFAULT_CHARACTER_SET_SCHEMA, 
+               DEFAULT_CHARACTER_SET_NAME
+FROM  INFORMATION_SCHEMA.SCHEMATA</CommandText>
+                    <Parameters>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CATALOG_NAME" DataSetColumn="CATALOG_NAME" />
+              <Mapping SourceColumn="SCHEMA_NAME" DataSetColumn="SCHEMA_NAME" />
+              <Mapping SourceColumn="SCHEMA_OWNER" DataSetColumn="SCHEMA_OWNER" />
+              <Mapping SourceColumn="DEFAULT_CHARACTER_SET_CATALOG" DataSetColumn="DEFAULT_CHARACTER_SET_CATALOG" />
+              <Mapping SourceColumn="DEFAULT_CHARACTER_SET_SCHEMA" DataSetColumn="DEFAULT_CHARACTER_SET_SCHEMA" />
+              <Mapping SourceColumn="DEFAULT_CHARACTER_SET_NAME" DataSetColumn="DEFAULT_CHARACTER_SET_NAME" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DBObjPropertiesTableAdapter" GeneratorDataComponentClassName="DBObjPropertiesTableAdapter" Name="DBObjProperties" UserDataComponentName="DBObjPropertiesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="MenuMasterConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="False" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="True" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="True">
+                    <CommandText>SELECT objtype, objname, name, value
+FROM fn_listextendedproperty (@propName, @lvl1Type, @lvl1Name, @objType, @objName, @lvl3Type, @lvl3Name);</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="True" AutogeneratedName="propName" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@propName" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="lvl1Type" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@lvl1Type" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="lvl1Name" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@lvl1Name" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="objType" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@objType" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="objName" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@objName" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="lvl3Type" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@lvl3Type" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                      <Parameter AllowDbNull="True" AutogeneratedName="lvl3Name" ColumnName="" DataSourceName="" DataTypeServer="unknown" DbType="AnsiString" Direction="Input" ParameterName="@lvl3Name" Precision="0" Scale="0" Size="1024" SourceColumn="" SourceColumnNullMapping="False" SourceVersion="Current">
+                      </Parameter>
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="objtype" DataSetColumn="objtype" />
+              <Mapping SourceColumn="objname" DataSetColumn="objname" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="value" DataSetColumn="value" />
+            </Mappings>
+            <Sources>
+            </Sources>
+          </TableAdapter>
+        </Tables>
+        <Sources>
+        </Sources>
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SchemaReader" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="SchemaReader" msprop:Generator_DataSetName="SchemaReader">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Entities" msprop:Generator_UserTableName="Entities" msprop:Generator_RowDeletedName="EntitiesRowDeleted" msprop:Generator_RowChangedName="EntitiesRowChanged" msprop:Generator_RowClassName="EntitiesRow" msprop:Generator_RowChangingName="EntitiesRowChanging" msprop:Generator_RowEvArgName="EntitiesRowChangeEvent" msprop:Generator_RowEvHandlerName="EntitiesRowChangeEventHandler" msprop:Generator_TableClassName="EntitiesDataTable" msprop:Generator_TableVarName="tableEntities" msprop:Generator_RowDeletingName="EntitiesRowDeleting" msprop:Generator_TablePropName="Entities">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TABLE_CATALOG" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TABLE_CATALOG" msprop:Generator_ColumnVarNameInTable="columnTABLE_CATALOG" msprop:Generator_ColumnPropNameInRow="TABLE_CATALOG" msprop:Generator_ColumnPropNameInTable="TABLE_CATALOGColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_SCHEMA" msprop:Generator_UserColumnName="TABLE_SCHEMA" msprop:Generator_ColumnVarNameInTable="columnTABLE_SCHEMA" msprop:Generator_ColumnPropNameInRow="TABLE_SCHEMA" msprop:Generator_ColumnPropNameInTable="TABLE_SCHEMAColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_NAME" msprop:Generator_UserColumnName="TABLE_NAME" msprop:Generator_ColumnVarNameInTable="columnTABLE_NAME" msprop:Generator_ColumnPropNameInRow="TABLE_NAME" msprop:Generator_ColumnPropNameInTable="TABLE_NAMEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_TYPE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TABLE_TYPE" msprop:Generator_ColumnVarNameInTable="columnTABLE_TYPE" msprop:Generator_ColumnPropNameInRow="TABLE_TYPE" msprop:Generator_ColumnPropNameInTable="TABLE_TYPEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="10" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="OBJECT_ID" msdata:ReadOnly="true" msprop:Generator_UserColumnName="OBJECT_ID" msprop:Generator_ColumnVarNameInTable="columnOBJECT_ID" msprop:Generator_ColumnPropNameInRow="OBJECT_ID" msprop:Generator_ColumnPropNameInTable="OBJECT_IDColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="55" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schemaname" msdata:ReadOnly="true" msprop:Generator_UserColumnName="schemaname" msprop:Generator_ColumnVarNameInTable="columnschemaname" msprop:Generator_ColumnPropNameInRow="schemaname" msprop:Generator_ColumnPropNameInTable="schemanameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1024" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="FieldDefinitions" msprop:Generator_UserTableName="FieldDefinitions" msprop:Generator_RowDeletedName="FieldDefinitionsRowDeleted" msprop:Generator_RowChangedName="FieldDefinitionsRowChanged" msprop:Generator_RowClassName="FieldDefinitionsRow" msprop:Generator_RowChangingName="FieldDefinitionsRowChanging" msprop:Generator_RowEvArgName="FieldDefinitionsRowChangeEvent" msprop:Generator_RowEvHandlerName="FieldDefinitionsRowChangeEventHandler" msprop:Generator_TableClassName="FieldDefinitionsDataTable" msprop:Generator_TableVarName="tableFieldDefinitions" msprop:Generator_RowDeletingName="FieldDefinitionsRowDeleting" msprop:Generator_TablePropName="FieldDefinitions">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="table_name" msprop:Generator_UserColumnName="table_name" msprop:Generator_ColumnVarNameInTable="columntable_name" msprop:Generator_ColumnPropNameInRow="table_name" msprop:Generator_ColumnPropNameInTable="table_nameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="column_name" msprop:Generator_UserColumnName="column_name" msprop:Generator_ColumnVarNameInTable="columncolumn_name" msprop:Generator_ColumnPropNameInRow="column_name" msprop:Generator_ColumnPropNameInTable="column_nameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Column_Default" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Column_Default" msprop:Generator_ColumnVarNameInTable="columnColumn_Default" msprop:Generator_ColumnPropNameInRow="Column_Default" msprop:Generator_ColumnPropNameInTable="Column_DefaultColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="4000" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="is_nullable" msdata:ReadOnly="true" msprop:Generator_UserColumnName="is_nullable" msprop:Generator_ColumnVarNameInTable="columnis_nullable" msprop:Generator_ColumnPropNameInRow="is_nullable" msprop:Generator_ColumnPropNameInTable="is_nullableColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="3" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Data_type" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Data_type" msprop:Generator_ColumnVarNameInTable="columnData_type" msprop:Generator_ColumnPropNameInRow="Data_type" msprop:Generator_ColumnPropNameInTable="Data_typeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="length" msdata:ReadOnly="true" msprop:Generator_UserColumnName="length" msprop:Generator_ColumnVarNameInTable="columnlength" msprop:Generator_ColumnPropNameInRow="length" msprop:Generator_ColumnPropNameInTable="lengthColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Relationship" msprop:Generator_UserColumnName="Relationship" msprop:Generator_ColumnVarNameInTable="columnRelationship" msprop:Generator_ColumnPropNameInRow="Relationship" msprop:Generator_ColumnPropNameInTable="RelationshipColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="category" msdata:ReadOnly="true" msprop:Generator_UserColumnName="category" msprop:Generator_ColumnVarNameInTable="columncategory" msprop:Generator_ColumnPropNameInRow="category" msprop:Generator_ColumnPropNameInTable="categoryColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="object_id" msdata:DataType="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" msdata:ReadOnly="true" msprop:Generator_UserColumnName="object_id" msprop:Generator_ColumnVarNameInTable="columnobject_id" msprop:Generator_ColumnPropNameInRow="object_id" msprop:Generator_ColumnPropNameInTable="object_idColumn" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ChildRelations" msprop:Generator_UserTableName="ChildRelations" msprop:Generator_RowDeletedName="ChildRelationsRowDeleted" msprop:Generator_RowChangedName="ChildRelationsRowChanged" msprop:Generator_RowClassName="ChildRelationsRow" msprop:Generator_RowChangingName="ChildRelationsRowChanging" msprop:Generator_RowEvArgName="ChildRelationsRowChangeEvent" msprop:Generator_RowEvHandlerName="ChildRelationsRowChangeEventHandler" msprop:Generator_TableClassName="ChildRelationsDataTable" msprop:Generator_TableVarName="tableChildRelations" msprop:Generator_RowDeletingName="ChildRelationsRowDeleting" msprop:Generator_TablePropName="ChildRelations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FTable" msprop:Generator_UserColumnName="FTable" msprop:Generator_ColumnVarNameInTable="columnFTable" msprop:Generator_ColumnPropNameInRow="FTable" msprop:Generator_ColumnPropNameInTable="FTableColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FCol" msprop:Generator_UserColumnName="FCol" msprop:Generator_ColumnVarNameInTable="columnFCol" msprop:Generator_ColumnPropNameInRow="FCol" msprop:Generator_ColumnPropNameInTable="FColColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefTab" msprop:Generator_UserColumnName="RefTab" msprop:Generator_ColumnVarNameInTable="columnRefTab" msprop:Generator_ColumnPropNameInRow="RefTab" msprop:Generator_ColumnPropNameInTable="RefTabColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefCol" msprop:Generator_UserColumnName="RefCol" msprop:Generator_ColumnVarNameInTable="columnRefCol" msprop:Generator_ColumnPropNameInRow="RefCol" msprop:Generator_ColumnPropNameInTable="RefColColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="isNullable" msdata:ReadOnly="true" msprop:Generator_UserColumnName="isNullable" msprop:Generator_ColumnVarNameInTable="columnisNullable" msprop:Generator_ColumnPropNameInRow="isNullable" msprop:Generator_ColumnPropNameInTable="isNullableColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ForeignRelations" msprop:Generator_UserTableName="ForeignRelations" msprop:Generator_RowDeletedName="ForeignRelationsRowDeleted" msprop:Generator_RowChangedName="ForeignRelationsRowChanged" msprop:Generator_RowClassName="ForeignRelationsRow" msprop:Generator_RowChangingName="ForeignRelationsRowChanging" msprop:Generator_RowEvArgName="ForeignRelationsRowChangeEvent" msprop:Generator_RowEvHandlerName="ForeignRelationsRowChangeEventHandler" msprop:Generator_TableClassName="ForeignRelationsDataTable" msprop:Generator_TableVarName="tableForeignRelations" msprop:Generator_RowDeletingName="ForeignRelationsRowDeleting" msprop:Generator_TablePropName="ForeignRelations">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="FTable" msprop:Generator_UserColumnName="FTable" msprop:Generator_ColumnVarNameInTable="columnFTable" msprop:Generator_ColumnPropNameInRow="FTable" msprop:Generator_ColumnPropNameInTable="FTableColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="FCol" msprop:Generator_UserColumnName="FCol" msprop:Generator_ColumnVarNameInTable="columnFCol" msprop:Generator_ColumnPropNameInRow="FCol" msprop:Generator_ColumnPropNameInTable="FColColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefTab" msprop:Generator_UserColumnName="RefTab" msprop:Generator_ColumnVarNameInTable="columnRefTab" msprop:Generator_ColumnPropNameInRow="RefTab" msprop:Generator_ColumnPropNameInTable="RefTabColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RefCol" msprop:Generator_UserColumnName="RefCol" msprop:Generator_ColumnVarNameInTable="columnRefCol" msprop:Generator_ColumnPropNameInRow="RefCol" msprop:Generator_ColumnPropNameInTable="RefColColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="isNullable" msdata:ReadOnly="true" msprop:Generator_UserColumnName="isNullable" msprop:Generator_ColumnVarNameInTable="columnisNullable" msprop:Generator_ColumnPropNameInRow="isNullable" msprop:Generator_ColumnPropNameInTable="isNullableColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ConstraintName" msprop:Generator_UserColumnName="ConstraintName" msprop:Generator_ColumnPropNameInRow="ConstraintName" msprop:Generator_ColumnVarNameInTable="columnConstraintName" msprop:Generator_ColumnPropNameInTable="ConstraintNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="KeyInfo" msprop:Generator_UserTableName="KeyInfo" msprop:Generator_RowDeletedName="KeyInfoRowDeleted" msprop:Generator_RowChangedName="KeyInfoRowChanged" msprop:Generator_RowClassName="KeyInfoRow" msprop:Generator_RowChangingName="KeyInfoRowChanging" msprop:Generator_RowEvArgName="KeyInfoRowChangeEvent" msprop:Generator_RowEvHandlerName="KeyInfoRowChangeEventHandler" msprop:Generator_TableClassName="KeyInfoDataTable" msprop:Generator_TableVarName="tableKeyInfo" msprop:Generator_RowDeletingName="KeyInfoRowDeleting" msprop:Generator_TablePropName="KeyInfo">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInTable="nameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="id" msprop:Generator_UserColumnName="id" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInTable="idColumn" type="xs:int" />
+              <xs:element name="xtype" msdata:ReadOnly="true" msprop:Generator_UserColumnName="xtype" msprop:Generator_ColumnPropNameInRow="xtype" msprop:Generator_ColumnVarNameInTable="columnxtype" msprop:Generator_ColumnPropNameInTable="xtypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="parent_obj" msprop:Generator_UserColumnName="parent_obj" msprop:Generator_ColumnPropNameInRow="parent_obj" msprop:Generator_ColumnVarNameInTable="columnparent_obj" msprop:Generator_ColumnPropNameInTable="parent_objColumn" type="xs:int" />
+              <xs:element name="type" msdata:ReadOnly="true" msprop:Generator_UserColumnName="type" msprop:Generator_ColumnPropNameInRow="type" msprop:Generator_ColumnVarNameInTable="columntype" msprop:Generator_ColumnPropNameInTable="typeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TableName" msprop:Generator_UserColumnName="TableName" msprop:Generator_ColumnPropNameInRow="TableName" msprop:Generator_ColumnVarNameInTable="columnTableName" msprop:Generator_ColumnPropNameInTable="TableNameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TABLE_CONSTRAINTS" msprop:Generator_UserTableName="TABLE_CONSTRAINTS" msprop:Generator_RowDeletedName="TABLE_CONSTRAINTSRowDeleted" msprop:Generator_RowChangedName="TABLE_CONSTRAINTSRowChanged" msprop:Generator_RowClassName="TABLE_CONSTRAINTSRow" msprop:Generator_RowChangingName="TABLE_CONSTRAINTSRowChanging" msprop:Generator_RowEvArgName="TABLE_CONSTRAINTSRowChangeEvent" msprop:Generator_RowEvHandlerName="TABLE_CONSTRAINTSRowChangeEventHandler" msprop:Generator_TableClassName="TABLE_CONSTRAINTSDataTable" msprop:Generator_TableVarName="tableTABLE_CONSTRAINTS" msprop:Generator_RowDeletingName="TABLE_CONSTRAINTSRowDeleting" msprop:Generator_TablePropName="TABLE_CONSTRAINTS">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CONSTRAINT_CATALOG" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CONSTRAINT_CATALOG" msprop:Generator_ColumnVarNameInTable="columnCONSTRAINT_CATALOG" msprop:Generator_ColumnPropNameInRow="CONSTRAINT_CATALOG" msprop:Generator_ColumnPropNameInTable="CONSTRAINT_CATALOGColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONSTRAINT_SCHEMA" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CONSTRAINT_SCHEMA" msprop:Generator_ColumnVarNameInTable="columnCONSTRAINT_SCHEMA" msprop:Generator_ColumnPropNameInRow="CONSTRAINT_SCHEMA" msprop:Generator_ColumnPropNameInTable="CONSTRAINT_SCHEMAColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONSTRAINT_NAME" msprop:Generator_UserColumnName="CONSTRAINT_NAME" msprop:Generator_ColumnVarNameInTable="columnCONSTRAINT_NAME" msprop:Generator_ColumnPropNameInRow="CONSTRAINT_NAME" msprop:Generator_ColumnPropNameInTable="CONSTRAINT_NAMEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_CATALOG" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TABLE_CATALOG" msprop:Generator_ColumnVarNameInTable="columnTABLE_CATALOG" msprop:Generator_ColumnPropNameInRow="TABLE_CATALOG" msprop:Generator_ColumnPropNameInTable="TABLE_CATALOGColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_SCHEMA" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TABLE_SCHEMA" msprop:Generator_ColumnVarNameInTable="columnTABLE_SCHEMA" msprop:Generator_ColumnPropNameInRow="TABLE_SCHEMA" msprop:Generator_ColumnPropNameInTable="TABLE_SCHEMAColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_NAME" msprop:Generator_UserColumnName="TABLE_NAME" msprop:Generator_ColumnVarNameInTable="columnTABLE_NAME" msprop:Generator_ColumnPropNameInRow="TABLE_NAME" msprop:Generator_ColumnPropNameInTable="TABLE_NAMEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONSTRAINT_TYPE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CONSTRAINT_TYPE" msprop:Generator_ColumnVarNameInTable="columnCONSTRAINT_TYPE" msprop:Generator_ColumnPropNameInRow="CONSTRAINT_TYPE" msprop:Generator_ColumnPropNameInTable="CONSTRAINT_TYPEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="11" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IS_DEFERRABLE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="IS_DEFERRABLE" msprop:Generator_ColumnVarNameInTable="columnIS_DEFERRABLE" msprop:Generator_ColumnPropNameInRow="IS_DEFERRABLE" msprop:Generator_ColumnPropNameInTable="IS_DEFERRABLEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="INITIALLY_DEFERRED" msdata:ReadOnly="true" msprop:Generator_UserColumnName="INITIALLY_DEFERRED" msprop:Generator_ColumnVarNameInTable="columnINITIALLY_DEFERRED" msprop:Generator_ColumnPropNameInRow="INITIALLY_DEFERRED" msprop:Generator_ColumnPropNameInTable="INITIALLY_DEFERREDColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="CONSTRAINT_COLUMN_USAGE" msprop:Generator_UserTableName="CONSTRAINT_COLUMN_USAGE" msprop:Generator_RowDeletedName="CONSTRAINT_COLUMN_USAGERowDeleted" msprop:Generator_RowChangedName="CONSTRAINT_COLUMN_USAGERowChanged" msprop:Generator_RowClassName="CONSTRAINT_COLUMN_USAGERow" msprop:Generator_RowChangingName="CONSTRAINT_COLUMN_USAGERowChanging" msprop:Generator_RowEvArgName="CONSTRAINT_COLUMN_USAGERowChangeEvent" msprop:Generator_RowEvHandlerName="CONSTRAINT_COLUMN_USAGERowChangeEventHandler" msprop:Generator_TableClassName="CONSTRAINT_COLUMN_USAGEDataTable" msprop:Generator_TableVarName="tableCONSTRAINT_COLUMN_USAGE" msprop:Generator_RowDeletingName="CONSTRAINT_COLUMN_USAGERowDeleting" msprop:Generator_TablePropName="CONSTRAINT_COLUMN_USAGE">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TABLE_CATALOG" msprop:Generator_UserColumnName="TABLE_CATALOG" msprop:Generator_ColumnVarNameInTable="columnTABLE_CATALOG" msprop:Generator_ColumnPropNameInRow="TABLE_CATALOG" msprop:Generator_ColumnPropNameInTable="TABLE_CATALOGColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_SCHEMA" msprop:Generator_UserColumnName="TABLE_SCHEMA" msprop:Generator_ColumnVarNameInTable="columnTABLE_SCHEMA" msprop:Generator_ColumnPropNameInRow="TABLE_SCHEMA" msprop:Generator_ColumnPropNameInTable="TABLE_SCHEMAColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TABLE_NAME" msprop:Generator_UserColumnName="TABLE_NAME" msprop:Generator_ColumnVarNameInTable="columnTABLE_NAME" msprop:Generator_ColumnPropNameInRow="TABLE_NAME" msprop:Generator_ColumnPropNameInTable="TABLE_NAMEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COLUMN_NAME" msprop:Generator_UserColumnName="COLUMN_NAME" msprop:Generator_ColumnVarNameInTable="columnCOLUMN_NAME" msprop:Generator_ColumnPropNameInRow="COLUMN_NAME" msprop:Generator_ColumnPropNameInTable="COLUMN_NAMEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONSTRAINT_CATALOG" msprop:Generator_UserColumnName="CONSTRAINT_CATALOG" msprop:Generator_ColumnVarNameInTable="columnCONSTRAINT_CATALOG" msprop:Generator_ColumnPropNameInRow="CONSTRAINT_CATALOG" msprop:Generator_ColumnPropNameInTable="CONSTRAINT_CATALOGColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONSTRAINT_SCHEMA" msprop:Generator_UserColumnName="CONSTRAINT_SCHEMA" msprop:Generator_ColumnVarNameInTable="columnCONSTRAINT_SCHEMA" msprop:Generator_ColumnPropNameInRow="CONSTRAINT_SCHEMA" msprop:Generator_ColumnPropNameInTable="CONSTRAINT_SCHEMAColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CONSTRAINT_NAME" msprop:Generator_UserColumnName="CONSTRAINT_NAME" msprop:Generator_ColumnVarNameInTable="columnCONSTRAINT_NAME" msprop:Generator_ColumnPropNameInRow="CONSTRAINT_NAME" msprop:Generator_ColumnPropNameInTable="CONSTRAINT_NAMEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="SCHEMATA" msprop:Generator_UserTableName="SCHEMATA" msprop:Generator_RowDeletedName="SCHEMATARowDeleted" msprop:Generator_RowChangedName="SCHEMATARowChanged" msprop:Generator_RowClassName="SCHEMATARow" msprop:Generator_RowChangingName="SCHEMATARowChanging" msprop:Generator_RowEvArgName="SCHEMATARowChangeEvent" msprop:Generator_RowEvHandlerName="SCHEMATARowChangeEventHandler" msprop:Generator_TableClassName="SCHEMATADataTable" msprop:Generator_TableVarName="tableSCHEMATA" msprop:Generator_RowDeletingName="SCHEMATARowDeleting" msprop:Generator_TablePropName="SCHEMATA">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CATALOG_NAME" msdata:ReadOnly="true" msprop:Generator_UserColumnName="CATALOG_NAME" msprop:Generator_ColumnPropNameInRow="CATALOG_NAME" msprop:Generator_ColumnVarNameInTable="columnCATALOG_NAME" msprop:Generator_ColumnPropNameInTable="CATALOG_NAMEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SCHEMA_NAME" msprop:Generator_UserColumnName="SCHEMA_NAME" msprop:Generator_ColumnPropNameInRow="SCHEMA_NAME" msprop:Generator_ColumnVarNameInTable="columnSCHEMA_NAME" msprop:Generator_ColumnPropNameInTable="SCHEMA_NAMEColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SCHEMA_OWNER" msdata:ReadOnly="true" msprop:Generator_UserColumnName="SCHEMA_OWNER" msprop:Generator_ColumnPropNameInRow="SCHEMA_OWNER" msprop:Generator_ColumnVarNameInTable="columnSCHEMA_OWNER" msprop:Generator_ColumnPropNameInTable="SCHEMA_OWNERColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEFAULT_CHARACTER_SET_CATALOG" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DEFAULT_CHARACTER_SET_CATALOG" msprop:Generator_ColumnPropNameInRow="DEFAULT_CHARACTER_SET_CATALOG" msprop:Generator_ColumnVarNameInTable="columnDEFAULT_CHARACTER_SET_CATALOG" msprop:Generator_ColumnPropNameInTable="DEFAULT_CHARACTER_SET_CATALOGColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEFAULT_CHARACTER_SET_SCHEMA" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DEFAULT_CHARACTER_SET_SCHEMA" msprop:Generator_ColumnPropNameInRow="DEFAULT_CHARACTER_SET_SCHEMA" msprop:Generator_ColumnVarNameInTable="columnDEFAULT_CHARACTER_SET_SCHEMA" msprop:Generator_ColumnPropNameInTable="DEFAULT_CHARACTER_SET_SCHEMAColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DEFAULT_CHARACTER_SET_NAME" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DEFAULT_CHARACTER_SET_NAME" msprop:Generator_ColumnPropNameInRow="DEFAULT_CHARACTER_SET_NAME" msprop:Generator_ColumnVarNameInTable="columnDEFAULT_CHARACTER_SET_NAME" msprop:Generator_ColumnPropNameInTable="DEFAULT_CHARACTER_SET_NAMEColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DBObjProperties" msprop:Generator_UserTableName="DBObjProperties" msprop:Generator_RowDeletedName="DBObjPropertiesRowDeleted" msprop:Generator_RowChangedName="DBObjPropertiesRowChanged" msprop:Generator_RowClassName="DBObjPropertiesRow" msprop:Generator_RowChangingName="DBObjPropertiesRowChanging" msprop:Generator_RowEvArgName="DBObjPropertiesRowChangeEvent" msprop:Generator_RowEvHandlerName="DBObjPropertiesRowChangeEventHandler" msprop:Generator_TableClassName="DBObjPropertiesDataTable" msprop:Generator_TableVarName="tableDBObjProperties" msprop:Generator_RowDeletingName="DBObjPropertiesRowDeleting" msprop:Generator_TablePropName="DBObjProperties">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="objtype" msprop:Generator_UserColumnName="objtype" msprop:Generator_ColumnVarNameInTable="columnobjtype" msprop:Generator_ColumnPropNameInRow="objtype" msprop:Generator_ColumnPropNameInTable="objtypeColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="objname" msprop:Generator_UserColumnName="objname" msprop:Generator_ColumnVarNameInTable="columnobjname" msprop:Generator_ColumnPropNameInRow="objname" msprop:Generator_ColumnPropNameInTable="objnameColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msprop:Generator_UserColumnName="name" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="128" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="value" msprop:Generator_UserColumnName="value" msprop:Generator_ColumnVarNameInTable="columnvalue" msprop:Generator_ColumnPropNameInRow="value" msprop:Generator_ColumnPropNameInTable="valueColumn" type="xs:anyType" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

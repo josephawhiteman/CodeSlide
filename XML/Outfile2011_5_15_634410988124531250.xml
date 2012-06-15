@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<Project xmlns:tt="http://schemas.techtemp.ca">
+  <Model EntityCount="2">
+    <EntityCollection>
+      <Entity ID="3C5FD996-B499-4E26-AB5B-946DB67BA598">
+        <Properties />
+        <Schema>admin</Schema>
+        <LogicalPackage>admin</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>AppUser</LogicalName>
+        <DBName>AppUser</DBName>
+        <ParentRelations>
+          <RelationReference IDREF="aa5e2a76-d27b-4972-9acc-5d42ea976a58" />
+        </ParentRelations>
+        <ChildRelations />
+        <Fields>
+          <Field ID="e3ae081d-3eea-4c1f-ae04-c3568947e631">
+            <LogicalName>AppUserID</LogicalName>
+            <DBName>AppUserID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="4f5e95d6-d986-433a-9d22-de0f5c0ae1cf">
+            <LogicalName>PersonID</LogicalName>
+            <DBName>PersonID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="c4a82ae3-dca8-4f9a-a6d8-1af3868768f7">
+            <LogicalName>ModuleUsage</LogicalName>
+            <DBName>ModuleUsage</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="b18887ce-ab42-402d-a95a-2d21b9d3d4f2">
+            <LogicalName>UNKeyColumn1</LogicalName>
+            <DBName>UNKeyColumn1</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="1fc17000-efdf-4683-880f-ffcb4bf550a1">
+            <LogicalName>UNKeyColumn2</LogicalName>
+            <DBName>UNKeyColumn2</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_AppUser</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_AppUser</LogicalName>
+            <RelatedEntityName>AppUser</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="c4a82ae3-dca8-4f9a-a6d8-1af3868768f7" Name="ModuleUsage" />
+              <FieldReference IDREF="4f5e95d6-d986-433a-9d22-de0f5c0ae1cf" Name="PersonID" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>IX_AppUser_1</Name>
+            <Type>UNIQUE</Type>
+            <LogicalName>IX_AppUser_1</LogicalName>
+            <RelatedEntityName>AppUser</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="b18887ce-ab42-402d-a95a-2d21b9d3d4f2" Name="UNKeyColumn1" />
+              <FieldReference IDREF="1fc17000-efdf-4683-880f-ffcb4bf550a1" Name="UNKeyColumn2" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_AppUser_Person</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_AppUser_Person</LogicalName>
+            <RelatedEntityName>AppUser</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="4f5e95d6-d986-433a-9d22-de0f5c0ae1cf" Name="PersonID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="DE2A3F68-0A59-4725-ADED-A41AB0D819BC">
+        <Properties />
+        <Schema>core</Schema>
+        <LogicalPackage>core</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>Person</LogicalName>
+        <DBName>Person</DBName>
+        <ParentRelations />
+        <ChildRelations>
+          <RelationReference IDREF="aa5e2a76-d27b-4972-9acc-5d42ea976a58" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="2c2bb491-9d41-4e16-adbd-dcfc0924e974">
+            <LogicalName>ID</LogicalName>
+            <DBName>ID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="8f7c8894-df2b-4027-9ef2-6c7e4b927be5">
+            <LogicalName>Name</LogicalName>
+            <DBName>Name</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="3938737e-cc31-4904-bb3e-3c1e05701ecc">
+            <LogicalName>MiddleName</LogicalName>
+            <DBName>MiddleName</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="74743328-7385-4260-8e70-b965b7af0396">
+            <LogicalName>LastName</LogicalName>
+            <DBName>LastName</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="f7d52165-355d-40cf-a919-8574686d995d">
+            <LogicalName>test</LogicalName>
+            <DBName>test</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_Person</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_Person</LogicalName>
+            <RelatedEntityName>Person</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="2c2bb491-9d41-4e16-adbd-dcfc0924e974" Name="ID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+    </EntityCollection>
+    <Relations>
+      <Relation ID="aa5e2a76-d27b-4972-9acc-5d42ea976a58">
+        <ChildEntity IDREF="3C5FD996-B499-4E26-AB5B-946DB67BA598" />
+        <ParentEntity IDREF="DE2A3F68-0A59-4725-ADED-A41AB0D819BC" />
+        <LogicalName>AppUser.PersonID</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="2c2bb491-9d41-4e16-adbd-dcfc0924e974" Name="ID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="4f5e95d6-d986-433a-9d22-de0f5c0ae1cf" Name="PersonID" />
+        </ForeignFields>
+      </Relation>
+    </Relations>
+  </Model>
+  <Settings>
+    <EntityTransform>EntityDef.xslt</EntityTransform>
+    <PackageIsSchema>true</PackageIsSchema>
+    <DefaultPackage>Data</DefaultPackage>
+    <DefaultModule>BL</DefaultModule>
+    <EntityCollectionTransform>EntityCollectionDef.xslt</EntityCollectionTransform>
+    <ConnectionString>Data Source=ALLYSON\sqlexpress;Initial Catalog=menumaster;Integrated Security=True</ConnectionString>
+    <CodeLanguage>CSharp</CodeLanguage>
+    <Pattern>General</Pattern>
+    <ProjectRoot>C:\Documents and Settings\user\My Documents\Visual Studio 2005\Projects\menumaster\Data\</ProjectRoot>
+    <UseCollections>true</UseCollections>
+    <ExportSingleFile>true</ExportSingleFile>
+  </Settings>
+</Project>

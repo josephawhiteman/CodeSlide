@@ -1,0 +1,318 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1F2EF73D-B82E-43F2-8816-E83C0B553EF4}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CodeGenerator</RootNamespace>
+    <AssemblyName>CodeGenerator</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.SqlServer.Types, Version=10.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>App.settings</DependentUpon>
+    </Compile>
+    <Compile Include="BL\DBReader\BaseSchemaReader.cs" />
+    <Compile Include="BL\DBReader\BaseDBFieldTypeMapper.cs" />
+    <Compile Include="BL\DBReader\DBReaderFilter.cs" />
+    <Compile Include="BL\DBReader\DS\SchemaReader.cs">
+      <DependentUpon>SchemaReader.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="BL\DBReader\DS\SchemaReader.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SchemaReader.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BL\Generator\BaseFieldType.cs" />
+    <Compile Include="BL\Generator\CSharpFieldType.cs" />
+    <Compile Include="BL\Generator\CSharpGenerator.cs" />
+    <Compile Include="BL\Generator\LogicalNameGenerator.cs" />
+    <Compile Include="BL\Modeler\Configuration.cs" />
+    <Compile Include="BL\Modeler\EntityReference.cs" />
+    <Compile Include="BL\Modeler\FieldReference.cs" />
+    <Compile Include="BL\Modeler\FieldReferenceCollection.cs" />
+    <Compile Include="BL\Modeler\FieldType.cs" />
+    <Compile Include="BL\Modeler\FieldEditorAttibute.cs" />
+    <Compile Include="BL\Modeler\INodeElement.cs" />
+    <Compile Include="BL\Modeler\ModelElementBase.cs" />
+    <Compile Include="BL\Modeler\ModelTreeNode.cs" />
+    <Compile Include="BL\Modeler\Project.cs" />
+    <Compile Include="BL\Modeler\RelationReference.cs" />
+    <Compile Include="BL\Modeler\RelationReferenceCollection.cs" />
+    <Compile Include="BL\Modeler\Schemas.cs" />
+    <Compile Include="BL\Modeler\TreeConfig.cs" />
+    <Compile Include="BL\Support\DataSource.cs" />
+    <Compile Include="BL\Support\DataSourceCollection.cs" />
+    <Compile Include="BL\Modeler\ProjectExporter.cs" />
+    <Compile Include="BL\Modeler\ModelExporter.cs" />
+    <Compile Include="BL\Generator\PHPFieldType.cs" />
+    <Compile Include="BL\Modeler\Constraint.cs" />
+    <Compile Include="BL\Modeler\ConstraintColection.cs" />
+    <Compile Include="BL\Modeler\Entity.cs" />
+    <Compile Include="BL\Modeler\EntityCollection.cs" />
+    <Compile Include="BL\Modeler\Field.cs" />
+    <Compile Include="BL\Modeler\FieldCollection.cs" />
+    <Compile Include="Controls\EntityEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EntityEditor.Designer.cs">
+      <DependentUpon>EntityEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FieldEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldEditor.Designer.cs">
+      <DependentUpon>FieldEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\FieldListBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldTypeEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\FieldTypeEditor.Designer.cs">
+      <DependentUpon>FieldTypeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NodeEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NodeEditor.Designer.cs">
+      <DependentUpon>NodeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NodeEditorBase.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\NodeEditorBase.Designer.cs">
+      <DependentUpon>NodeEditorBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RelationEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\RelationEditor.Designer.cs">
+      <DependentUpon>RelationEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\TreeNodeContextMenuStrip.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\TreeNodeToolStripDropDownItem.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DL\TESTDS.cs">
+      <DependentUpon>TESTDS.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DL\TESTDS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TESTDS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EntityDetail.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="EntityDetail.Designer.cs">
+      <DependentUpon>EntityDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmConnections.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmConnections.Designer.cs">
+      <DependentUpon>frmConnections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\frmSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\frmSettings.Designer.cs">
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SettingsDialog.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Forms\SettingsDialog.Designer.cs">
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BL\Generator\LanguageGenerator.cs" />
+    <Compile Include="MenuMasterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MenuMasterDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="BL\Generator\PHPGenerator.cs" />
+    <Compile Include="BL\DBReader\MySqlFieldTypeMapper.cs" />
+    <Compile Include="BL\DBReader\OracleFieldTypeMapper.cs" />
+    <Compile Include="BL\Generator\Program.cs" />
+    <Compile Include="BL\DBReader\MySQLSchemaReader.cs" />
+    <Compile Include="BL\DBReader\OracleSchemaReader.cs" />
+    <Compile Include="BL\Modeler\Model.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\EntityEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EntityEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FieldEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FieldEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\FieldTypeEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>FieldTypeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\NodeEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>NodeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\RelationEditor.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>RelationEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntityDetail.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>EntityDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmConnections.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmConnections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\frmSettings.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SettingsDialog.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>SettingsDialog.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <SubType>Designer</SubType>
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="App.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>App.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BL\DBReader\DBReader.cd" />
+    <None Include="BL\DBReader\DS\SchemaReader.xsc">
+      <DependentUpon>SchemaReader.xsd</DependentUpon>
+    </None>
+    <None Include="BL\DBReader\DS\SchemaReader.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SchemaReader.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="BL\DBReader\DS\SchemaReader.xss">
+      <DependentUpon>SchemaReader.xsd</DependentUpon>
+    </None>
+    <None Include="BL\Generator\Generator.cd" />
+    <None Include="BL\Modeler\Modeler.cd" />
+    <None Include="DL\TESTDS.xsc">
+      <DependentUpon>TESTDS.xsd</DependentUpon>
+    </None>
+    <None Include="DL\TESTDS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TESTDS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DL\TESTDS.xss">
+      <DependentUpon>TESTDS.xsd</DependentUpon>
+    </None>
+    <None Include="MenuMasterDataSet.xsc">
+      <DependentUpon>MenuMasterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MenuMasterDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MenuMasterDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="MenuMasterDataSet.xss">
+      <DependentUpon>MenuMasterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="BL\Modeler\Relation.cs" />
+    <Compile Include="BL\Modeler\RelationType.cs" />
+    <Compile Include="BL\DBReader\SqlFieldTypeMapper.cs" />
+    <Compile Include="BL\DBReader\SqlSchemaReader.cs" />
+    <Compile Include="BL\Modeler\RelationCollection.cs" />
+    <Compile Include="BL\Support\Settings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Templates\CSharp\General\EntityCollectionDef.xslt" />
+    <Content Include="Templates\CSharp\General\EntityDef.xslt" />
+    <Content Include="Templates\CSharp\Linq2SQL\EntityCollectionDef.xslt" />
+    <Content Include="Templates\CSharp\Linq2SQL\EntityDef.xslt" />
+    <Content Include="Templates\Java\Hibernate\HibernateMap.xslt" />
+    <Content Include="Templates\Java\JDO\jdoPkgMeta.xslt" />
+    <Content Include="Templates\PHP\General\EntityDef.xslt" />
+    <Content Include="Templates\TSQL\General\EntityCollectionDef.xslt" />
+    <Content Include="Templates\TSQL\General\EntityDef.xslt" />
+    <Content Include="XML\Final.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DS\" />
+    <Folder Include="Templates\CPlusPlus\" />
+    <Folder Include="Templates\ObjectiveC\" />
+    <Folder Include="Templates\Python\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

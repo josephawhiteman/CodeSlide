@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Font Name="Tahoma" Size="8.25" />
+  <Class Name="CodeGenerator.BL.Generator.LanguageGenerator">
+    <Position X="1.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <FileName>BL\Generator\LanguageGenerator.cs</FileName>
+      <HashCode>AACAAAACCAAAAAAAAAAAAAAAAAAAAgIAAAAAAAAEAAA=</HashCode>
+    </TypeIdentifier>
+    <NestedTypes>
+      <Enum Name="CodeGenerator.BL.Generator.LanguageGenerator.CodeLanguage" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>BL\Generator\LanguageGenerator.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+    </NestedTypes>
+  </Class>
+  <Class Name="CodeGenerator.BL.Generator.CSharpGenerator">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BL\Generator\CSharpGenerator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeGenerator.BL.Generator.PHPGenerator">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BL\Generator\PHPGenerator.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeGenerator.BL.Generator.BaseFieldType" Collapsed="true">
+    <Position X="7" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BL\Generator\BaseFieldType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CodeGenerator.BL.Generator.PHPFieldType" Collapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BL\Generator\PHPFieldType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="CodeGenerator.BL.Generator.BaseFieldType" ManuallyRouted="true">
+      <Path>
+        <Point X="7.75" Y="1.009" />
+        <Point X="7.75" Y="1.374" />
+        <Point X="6.75" Y="1.374" />
+        <Point X="6.75" Y="1.5" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+  <Class Name="CodeGenerator.BL.Generator.CSharpFieldType" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <FileName>BL\Generator\CSharpFieldType.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+    </TypeIdentifier>
+    <InheritanceLine Type="CodeGenerator.BL.Generator.BaseFieldType" ManuallyRouted="true">
+      <Path>
+        <Point X="7.75" Y="1.009" />
+        <Point X="7.75" Y="1.374" />
+        <Point X="8.5" Y="1.374" />
+        <Point X="8.5" Y="1.5" />
+      </Path>
+    </InheritanceLine>
+  </Class>
+</ClassDiagram>

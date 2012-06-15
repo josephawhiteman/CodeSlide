@@ -1,0 +1,1561 @@
+<?xml version="1.0"?>
+<Project xmlns:tt="http://schemas.techtemp.ca">
+  <Model EntityCount="11">
+    <EntityCollection>
+      <Entity ID="00FD6D4D-333F-4C18-B61D-333EE3A4ADBB">
+        <Properties>
+          <PropertyPair>
+            <Name>Table_Type</Name>
+            <Value>Master</Value>
+          </PropertyPair>
+        </Properties>
+        <Schema>dbo</Schema>
+        <LogicalPackage>dbo</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>Table_top</LogicalName>
+        <DBName>Table_top</DBName>
+        <ParentRelations />
+        <ChildRelations>
+          <RelationReference IDREF="e783785c-098d-4139-a429-c6326f3f82f8" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="4b31c77d-7f63-4348-9693-4c61b3a667af">
+            <LogicalName>portalid</LogicalName>
+            <DBName>portalid</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="d0423787-40da-4c2f-a094-dc7867245705">
+            <LogicalName>clientid</LogicalName>
+            <DBName>clientid</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="8dfe7537-db8f-4975-a073-f9c3cba10343">
+            <LogicalName>testdata</LogicalName>
+            <DBName>testdata</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="58fbdd0a-4cf1-45dc-b77a-4930f7124926">
+            <LogicalName>BigintColumn</LogicalName>
+            <DBName>BigintColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>bigint</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="244b0ead-ee3e-40f1-a657-340a7c6aa627">
+            <LogicalName>BinaryColumn</LogicalName>
+            <DBName>BinaryColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_bytesequence</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>binary</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="06f89352-6a34-467a-9b49-19dcad0c1c19">
+            <LogicalName>BitColumn</LogicalName>
+            <DBName>BitColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_boolean</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>bit</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="4e63e4ff-28ec-49f2-86be-4090763aacbf">
+            <LogicalName>ChartenColumn</LogicalName>
+            <DBName>ChartenColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>char</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="0aa3de2d-aa45-4531-a3cf-a2158eaa7da1">
+            <LogicalName>DatetimeColumn</LogicalName>
+            <DBName>DatetimeColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_temporal</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>datetime</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="c6de27f2-428b-4414-9c45-4f84b0f45e02">
+            <LogicalName>Decimal18Zero</LogicalName>
+            <DBName>Decimal18Zero</DBName>
+            <LogicalType>
+              <LogicalDataType>_real</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>decimal</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="10062d95-b196-48b0-b4d4-fd6edc912f5a">
+            <LogicalName>FloatColumn</LogicalName>
+            <DBName>FloatColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_real</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>float</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="d0bbf601-57f9-4dda-9823-274b3134c444">
+            <LogicalName>ImageColumn</LogicalName>
+            <DBName>ImageColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_bytesequence</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>image</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="aee22c8a-30fd-4eb9-98d4-61d5c55a27a0">
+            <LogicalName>IntColumn</LogicalName>
+            <DBName>IntColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="ff54500c-5cd4-43a1-bebd-ead2d1b2226d">
+            <LogicalName>MoneyColumn</LogicalName>
+            <DBName>MoneyColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_real</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>money</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="3ecc78b9-f5e3-4439-a05b-668d5ff875d3">
+            <LogicalName>NChar10Column</LogicalName>
+            <DBName>NChar10Column</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="862111c2-f7ad-4ee7-8c37-35b96c0d8aef">
+            <LogicalName>NTextColumn</LogicalName>
+            <DBName>NTextColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>ntext</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="a32c7782-8269-4fe8-8029-5c11fb67426a">
+            <LogicalName>Numeric18Zero</LogicalName>
+            <DBName>Numeric18Zero</DBName>
+            <LogicalType>
+              <LogicalDataType>_real</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>numeric</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="a64c3821-b0dd-4801-8b23-c0aa5e68355e">
+            <LogicalName>Nvarchar50Column</LogicalName>
+            <DBName>Nvarchar50Column</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="69962266-22c5-4cbb-84c3-66f7fc9b1703">
+            <LogicalName>NvarcharMaxColumn</LogicalName>
+            <DBName>NvarcharMaxColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="2d9a7a26-136f-4a7b-ad44-d7ff7f8f8405">
+            <LogicalName>RealColumn</LogicalName>
+            <DBName>RealColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_real</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>real</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="cec6e901-2820-46f5-b6c2-d1a6abcc4225">
+            <LogicalName>SmallDatetimeColumn</LogicalName>
+            <DBName>SmallDatetimeColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_temporal</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>smalldatetime</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="09e91e78-9089-472a-9d16-55659d969434">
+            <LogicalName>smailIntColumn</LogicalName>
+            <DBName>smailIntColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>smallint</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="8a882adb-97b8-46e4-9d22-37ff5e76ec50">
+            <LogicalName>smallmoneyColumn</LogicalName>
+            <DBName>smallmoneyColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_real</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>smallmoney</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="caa9f28f-1af5-4256-b332-a2f396481984">
+            <LogicalName>sqlVariantColumn</LogicalName>
+            <DBName>sqlVariantColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_variant</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>sql_variant</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="5bcbef95-5c7b-41f7-8ed1-3e17746aa69e">
+            <LogicalName>TextColumn</LogicalName>
+            <DBName>TextColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>text</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="11b9098e-9b77-42af-8301-52274ff58e8f">
+            <LogicalName>TimeStampColumn</LogicalName>
+            <DBName>TimeStampColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_temporal</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>timestamp</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="a75c4da7-f56e-4e2b-908f-1981484c1101">
+            <LogicalName>TinyIntcolumn</LogicalName>
+            <DBName>TinyIntcolumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>tinyint</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="f62dabd4-572d-4339-a553-fea74ced21b5">
+            <LogicalName>UniqueIdentifier</LogicalName>
+            <DBName>UniqueIdentifier</DBName>
+            <LogicalType>
+              <LogicalDataType>_guid</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>uniqueidentifier</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="5e3da50f-f52b-4add-bbcb-e897851cf410">
+            <LogicalName>varbinaryColumn</LogicalName>
+            <DBName>varbinaryColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_bytesequence</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varbinary</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="e91c60dd-a400-4132-8771-d2dfd61a79b5">
+            <LogicalName>varbinaryMaxColumn</LogicalName>
+            <DBName>varbinaryMaxColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_bytesequence</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varbinary</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="ee9a6757-c68a-4506-adcd-4af8945f1547">
+            <LogicalName>varchar50Column</LogicalName>
+            <DBName>varchar50Column</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="125e7791-9ca5-46b4-a533-33b5dee8d757">
+            <LogicalName>varcarmaxColumn</LogicalName>
+            <DBName>varcarmaxColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="b1a3f3d8-a03d-46e2-90c5-e264b8d49194">
+            <LogicalName>XmlColumn</LogicalName>
+            <DBName>XmlColumn</DBName>
+            <LogicalType>
+              <LogicalDataType>_xml</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>xml</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_Table_top</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_Table_top</LogicalName>
+            <RelatedEntityName>Table_top</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="d0423787-40da-4c2f-a094-dc7867245705" Name="clientid" />
+              <FieldReference IDREF="4b31c77d-7f63-4348-9693-4c61b3a667af" Name="portalid" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="D1C5B1DC-7DED-472C-B1D5-C0184E8665FB">
+        <Properties />
+        <Schema>dbo</Schema>
+        <LogicalPackage>dbo</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>Table_Bottom</LogicalName>
+        <DBName>Table_Bottom</DBName>
+        <ParentRelations>
+          <RelationReference IDREF="e783785c-098d-4139-a429-c6326f3f82f8" />
+          <RelationReference IDREF="a678a61b-fcd6-43d5-9d20-d4b7488db5d5" />
+        </ParentRelations>
+        <ChildRelations />
+        <Fields>
+          <Field ID="082783f6-22ec-4c08-9408-2b51aa54ba96">
+            <LogicalName>portalid</LogicalName>
+            <DBName>portalid</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="95392c91-2cea-43af-9874-741c748c221c">
+            <LogicalName>clientid</LogicalName>
+            <DBName>clientid</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="1185a95f-5588-4c75-a674-210791f45f62">
+            <LogicalName>serverID</LogicalName>
+            <DBName>serverID</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="bfd2c57a-bc2c-4bef-9302-06cbf34c8473">
+            <LogicalName>moredata</LogicalName>
+            <DBName>moredata</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="548af6ca-f242-4404-a607-1f8f521156c4">
+            <LogicalName>lookupid</LogicalName>
+            <DBName>lookupid</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_Table_Bottom</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_Table_Bottom</LogicalName>
+            <RelatedEntityName>Table_Bottom</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="95392c91-2cea-43af-9874-741c748c221c" Name="clientid" />
+              <FieldReference IDREF="082783f6-22ec-4c08-9408-2b51aa54ba96" Name="portalid" />
+              <FieldReference IDREF="1185a95f-5588-4c75-a674-210791f45f62" Name="serverID" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_Table_Bottom_Table_top</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_Table_Bottom_Table_top</LogicalName>
+            <RelatedEntityName>Table_Bottom</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="95392c91-2cea-43af-9874-741c748c221c" Name="clientid" />
+              <FieldReference IDREF="082783f6-22ec-4c08-9408-2b51aa54ba96" Name="portalid" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_Table_Bottom_Table_Lookup</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_Table_Bottom_Table_Lookup</LogicalName>
+            <RelatedEntityName>Table_Bottom</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="548af6ca-f242-4404-a607-1f8f521156c4" Name="lookupid" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="7085A38B-22D7-4F67-ABA2-D1E5D74750FB">
+        <Properties />
+        <Schema>dbo</Schema>
+        <LogicalPackage>dbo</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>Table_Lookup</LogicalName>
+        <DBName>Table_Lookup</DBName>
+        <ParentRelations />
+        <ChildRelations>
+          <RelationReference IDREF="a678a61b-fcd6-43d5-9d20-d4b7488db5d5" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="0d9019b7-2a34-4f55-b88b-e82e4ef4f0aa">
+            <LogicalName>LookupTypeID</LogicalName>
+            <DBName>LookupTypeID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="20ea4b66-916f-4a6b-b9d7-0bc4ecf5097a">
+            <LogicalName>Name</LogicalName>
+            <DBName>Name</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="4b0f84f6-f8ae-4abb-802a-111c2e02a028">
+            <LogicalName>desc</LogicalName>
+            <DBName>desc</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_Table_Lookup</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_Table_Lookup</LogicalName>
+            <RelatedEntityName>Table_Lookup</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="0d9019b7-2a34-4f55-b88b-e82e4ef4f0aa" Name="LookupTypeID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="5C3A239E-0F22-4190-A2BE-9AF2E589199B">
+        <Properties>
+          <PropertyPair>
+            <Name>microsoft_database_tools_support</Name>
+            <Value>1</Value>
+          </PropertyPair>
+        </Properties>
+        <Schema>dbo</Schema>
+        <LogicalPackage>dbo</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>sysdiagrams</LogicalName>
+        <DBName>sysdiagrams</DBName>
+        <ParentRelations />
+        <ChildRelations />
+        <Fields>
+          <Field ID="6dd59603-225e-404f-8bfb-aadb2e50e68f">
+            <LogicalName>name</LogicalName>
+            <DBName>name</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="e4299ed7-819d-4476-8b4c-2d025a84df46">
+            <LogicalName>principal_id</LogicalName>
+            <DBName>principal_id</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="bc6a77c1-e881-4e79-83ee-38204733d502">
+            <LogicalName>diagram_id</LogicalName>
+            <DBName>diagram_id</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="eda493e6-be3b-4f54-a347-804bdd042d40">
+            <LogicalName>version</LogicalName>
+            <DBName>version</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="c0168ca2-2088-436d-8aa8-451d45fc533d">
+            <LogicalName>definition</LogicalName>
+            <DBName>definition</DBName>
+            <LogicalType>
+              <LogicalDataType>_bytesequence</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varbinary</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK__sysdiagrams__7D78A4E7</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK__sysdiagrams__7D78A4E7</LogicalName>
+            <RelatedEntityName>sysdiagrams</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="bc6a77c1-e881-4e79-83ee-38204733d502" Name="diagram_id" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>UK_principal_name</Name>
+            <Type>UNIQUE</Type>
+            <LogicalName>UK_principal_name</LogicalName>
+            <RelatedEntityName>sysdiagrams</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="6dd59603-225e-404f-8bfb-aadb2e50e68f" Name="name" />
+              <FieldReference IDREF="e4299ed7-819d-4476-8b4c-2d025a84df46" Name="principal_id" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="E27DBF06-04CD-41D6-859A-35F4DCAB1BFC">
+        <Properties />
+        <Schema>core</Schema>
+        <LogicalPackage>core</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>Person</LogicalName>
+        <DBName>Person</DBName>
+        <ParentRelations />
+        <ChildRelations>
+          <RelationReference IDREF="5cb6deda-6425-4318-acce-8cc80b8e7cbe" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="46b34c23-fe58-4360-8237-08e12e4b40e7">
+            <LogicalName>ID</LogicalName>
+            <DBName>ID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="78b7e4fc-a5e8-4b90-8f33-f73b1a79f19f">
+            <LogicalName>Name</LogicalName>
+            <DBName>Name</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="00333718-c1a8-4f1a-abc1-3af98db6b114">
+            <LogicalName>MiddleName</LogicalName>
+            <DBName>MiddleName</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="9984c5e9-4992-4d17-81fb-e317bcb04902">
+            <LogicalName>LastName</LogicalName>
+            <DBName>LastName</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="bf8a6bb1-8ba2-4c20-8b6f-8d3918cdfed9">
+            <LogicalName>test</LogicalName>
+            <DBName>test</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_Person</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_Person</LogicalName>
+            <RelatedEntityName>Person</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="46b34c23-fe58-4360-8237-08e12e4b40e7" Name="ID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="6A51A1DE-DE91-4B1D-84D5-9997C8C9BE5B">
+        <Properties />
+        <Schema>navig</Schema>
+        <LogicalPackage>navig</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>MenuItems</LogicalName>
+        <DBName>MenuItems</DBName>
+        <ParentRelations>
+          <RelationReference IDREF="758dd001-aa69-4a8b-94b8-36c38d00b2e3" />
+        </ParentRelations>
+        <ChildRelations>
+          <RelationReference IDREF="758dd001-aa69-4a8b-94b8-36c38d00b2e3" />
+          <RelationReference IDREF="d27bc124-9e8c-4c89-a901-8b5223fbcb79" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="6895d432-311c-4bc1-9c23-8bda538b69fa">
+            <LogicalName>ID</LogicalName>
+            <DBName>ID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="e054ba16-5f16-4243-80db-175946d3edf6">
+            <LogicalName>Item_Key</LogicalName>
+            <DBName>Item_Key</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="f2df78b6-b35b-49dc-838a-361a599eed84">
+            <LogicalName>ParentItemID</LogicalName>
+            <DBName>ParentItemID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_MenuItems</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_MenuItems</LogicalName>
+            <RelatedEntityName>MenuItems</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="6895d432-311c-4bc1-9c23-8bda538b69fa" Name="ID" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_MenuItems_MenuItems</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_MenuItems_MenuItems</LogicalName>
+            <RelatedEntityName>MenuItems</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="f2df78b6-b35b-49dc-838a-361a599eed84" Name="ParentItemID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="1EF0280D-DA7D-4345-8ED4-6D07F1C8820C">
+        <Properties />
+        <Schema>navig</Schema>
+        <LogicalPackage>navig</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>MenuDetailType</LogicalName>
+        <DBName>MenuDetailType</DBName>
+        <ParentRelations />
+        <ChildRelations>
+          <RelationReference IDREF="6812d60b-4751-42f5-a5ab-554cee490225" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="3585ec3f-99bb-4204-ae83-cb12cbf2f2e5">
+            <LogicalName>MenuDetailTypeID</LogicalName>
+            <DBName>MenuDetailTypeID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="79fc3c86-c556-4a7a-a64d-d8b92174b6be">
+            <LogicalName>Desc</LogicalName>
+            <DBName>Desc</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_MenuDetailType</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_MenuDetailType</LogicalName>
+            <RelatedEntityName>MenuDetailType</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="3585ec3f-99bb-4204-ae83-cb12cbf2f2e5" Name="MenuDetailTypeID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="DE123CA5-9940-4676-8EE9-7D94C00CF982">
+        <Properties />
+        <Schema>navig</Schema>
+        <LogicalPackage>navig</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>MenuItemDetailActions</LogicalName>
+        <DBName>MenuItemDetailActions</DBName>
+        <ParentRelations>
+          <RelationReference IDREF="2e71e76a-1878-46bd-8048-35f706c44515" />
+          <RelationReference IDREF="173ee2c5-ad85-4c1d-aa82-3815658e87c4" />
+        </ParentRelations>
+        <ChildRelations />
+        <Fields>
+          <Field ID="92bca904-b8d8-4ef6-8d72-2efbb779a5f8">
+            <LogicalName>ActionID</LogicalName>
+            <DBName>ActionID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="3695afb7-11b4-4230-b827-2972eb338139">
+            <LogicalName>MenuItemDetailID</LogicalName>
+            <DBName>MenuItemDetailID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_MenuItem_DetailActions</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_MenuItem_DetailActions</LogicalName>
+            <RelatedEntityName>MenuItemDetailActions</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="92bca904-b8d8-4ef6-8d72-2efbb779a5f8" Name="ActionID" />
+              <FieldReference IDREF="3695afb7-11b4-4230-b827-2972eb338139" Name="MenuItemDetailID" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_MenuItem_DetailActions_Actions</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_MenuItem_DetailActions_Actions</LogicalName>
+            <RelatedEntityName>MenuItemDetailActions</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="92bca904-b8d8-4ef6-8d72-2efbb779a5f8" Name="ActionID" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_MenuItem_DetailActions_Menu_Item_Detail</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_MenuItem_DetailActions_Menu_Item_Detail</LogicalName>
+            <RelatedEntityName>MenuItemDetailActions</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="3695afb7-11b4-4230-b827-2972eb338139" Name="MenuItemDetailID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="ACF565DB-A188-40B7-B83B-FA65431C089D">
+        <Properties />
+        <Schema>navig</Schema>
+        <LogicalPackage>navig</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>Actions</LogicalName>
+        <DBName>Actions</DBName>
+        <ParentRelations />
+        <ChildRelations>
+          <RelationReference IDREF="2e71e76a-1878-46bd-8048-35f706c44515" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="ce2be513-903a-4894-b515-4d2b4668a45f">
+            <LogicalName>ActionID</LogicalName>
+            <DBName>ActionID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="6693ff22-edb8-4ae7-bc96-5e35e012903c">
+            <LogicalName>ActionName</LogicalName>
+            <DBName>ActionName</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>varchar</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_Actions</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_Actions</LogicalName>
+            <RelatedEntityName>Actions</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="ce2be513-903a-4894-b515-4d2b4668a45f" Name="ActionID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="D3AFA6FB-7176-4FF0-91BB-B34A0E55730B">
+        <Properties />
+        <Schema>navig</Schema>
+        <LogicalPackage>navig</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>MenuItemDetail</LogicalName>
+        <DBName>MenuItemDetail</DBName>
+        <ParentRelations>
+          <RelationReference IDREF="d27bc124-9e8c-4c89-a901-8b5223fbcb79" />
+          <RelationReference IDREF="6812d60b-4751-42f5-a5ab-554cee490225" />
+        </ParentRelations>
+        <ChildRelations>
+          <RelationReference IDREF="173ee2c5-ad85-4c1d-aa82-3815658e87c4" />
+        </ChildRelations>
+        <Fields>
+          <Field ID="34c015b0-b49a-4132-a9ee-d06e3ca0da7d">
+            <LogicalName>MenuDetailID</LogicalName>
+            <DBName>MenuDetailID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="6bd3af3d-e59d-4213-9b42-f8e3390d3dbc">
+            <LogicalName>detail</LogicalName>
+            <DBName>detail</DBName>
+            <LogicalType>
+              <LogicalDataType>_text</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nvarchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="849ff93b-3a44-4df1-98f8-d032ce8b58c0">
+            <LogicalName>MenuId</LogicalName>
+            <DBName>MenuId</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+          <Field ID="f35c1141-3e4d-44da-bd01-8d6c99ce579a">
+            <LogicalName>MenuItemsDetailTypeID</LogicalName>
+            <DBName>MenuItemsDetailTypeID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>true</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_Menu_Item_Detail</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_Menu_Item_Detail</LogicalName>
+            <RelatedEntityName>MenuItemDetail</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="34c015b0-b49a-4132-a9ee-d06e3ca0da7d" Name="MenuDetailID" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_Menu_Item_Detail_MenuItems</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_Menu_Item_Detail_MenuItems</LogicalName>
+            <RelatedEntityName>MenuItemDetail</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="849ff93b-3a44-4df1-98f8-d032ce8b58c0" Name="MenuId" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_Menu_Item_Detail_MenuDetailType</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_Menu_Item_Detail_MenuDetailType</LogicalName>
+            <RelatedEntityName>MenuItemDetail</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="f35c1141-3e4d-44da-bd01-8d6c99ce579a" Name="MenuItemsDetailTypeID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+      <Entity ID="5E1ED110-CA99-477C-B8A4-50A33DF49D96">
+        <Properties />
+        <Schema>admin</Schema>
+        <LogicalPackage>admin</LogicalPackage>
+        <LogicalModule>BL</LogicalModule>
+        <LogicalName>AppUser</LogicalName>
+        <DBName>AppUser</DBName>
+        <ParentRelations>
+          <RelationReference IDREF="5cb6deda-6425-4318-acce-8cc80b8e7cbe" />
+        </ParentRelations>
+        <ChildRelations />
+        <Fields>
+          <Field ID="58bae202-cea0-4a5b-b91b-f67977ef2f1f">
+            <LogicalName>AppUserID</LogicalName>
+            <DBName>AppUserID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="fd8056a7-408d-4fc1-a4c4-7b10d38d2343">
+            <LogicalName>PersonID</LogicalName>
+            <DBName>PersonID</DBName>
+            <LogicalType>
+              <LogicalDataType>_integer</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>int</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="18951a71-8b59-4300-b53b-66a7949d3b05">
+            <LogicalName>ModuleUsage</LogicalName>
+            <DBName>ModuleUsage</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="3f6fad04-5924-48d9-9add-cd462496b6ba">
+            <LogicalName>UNKeyColumn1</LogicalName>
+            <DBName>UNKeyColumn1</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+          <Field ID="ae02e2e7-234e-415d-a5be-771996975555">
+            <LogicalName>UNKeyColumn2</LogicalName>
+            <DBName>UNKeyColumn2</DBName>
+            <LogicalType>
+              <LogicalDataType>_character</LogicalDataType>
+              <MaxDate>0001-01-01T00:00:00</MaxDate>
+              <MinDate>0001-01-01T00:00:00</MinDate>
+              <Max>0</Max>
+              <Min>0</Min>
+              <Precision>0</Precision>
+              <TemporalPresion>Date</TemporalPresion>
+            </LogicalType>
+            <DBType>nchar</DBType>
+            <Nullable>false</Nullable>
+          </Field>
+        </Fields>
+        <Constraints>
+          <Constraint>
+            <Name>PK_AppUser</Name>
+            <Type>PRIMARY KEY</Type>
+            <LogicalName>PK_AppUser</LogicalName>
+            <RelatedEntityName>AppUser</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="18951a71-8b59-4300-b53b-66a7949d3b05" Name="ModuleUsage" />
+              <FieldReference IDREF="fd8056a7-408d-4fc1-a4c4-7b10d38d2343" Name="PersonID" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>IX_AppUser_1</Name>
+            <Type>UNIQUE</Type>
+            <LogicalName>IX_AppUser_1</LogicalName>
+            <RelatedEntityName>AppUser</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="3f6fad04-5924-48d9-9add-cd462496b6ba" Name="UNKeyColumn1" />
+              <FieldReference IDREF="ae02e2e7-234e-415d-a5be-771996975555" Name="UNKeyColumn2" />
+            </Fields>
+          </Constraint>
+          <Constraint>
+            <Name>FK_AppUser_Person</Name>
+            <Type>FOREIGN KEY</Type>
+            <LogicalName>FK_AppUser_Person</LogicalName>
+            <RelatedEntityName>AppUser</RelatedEntityName>
+            <Fields>
+              <FieldReference IDREF="fd8056a7-408d-4fc1-a4c4-7b10d38d2343" Name="PersonID" />
+            </Fields>
+          </Constraint>
+        </Constraints>
+      </Entity>
+    </EntityCollection>
+    <Relations>
+      <Relation ID="e783785c-098d-4139-a429-c6326f3f82f8">
+        <ChildEntity IDREF="D1C5B1DC-7DED-472C-B1D5-C0184E8665FB" />
+        <ParentEntity IDREF="00FD6D4D-333F-4C18-B61D-333EE3A4ADBB" />
+        <LogicalName>Table_Bottom.clientid</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="d0423787-40da-4c2f-a094-dc7867245705" Name="clientid" />
+          <FieldReference IDREF="4b31c77d-7f63-4348-9693-4c61b3a667af" Name="portalid" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="95392c91-2cea-43af-9874-741c748c221c" Name="clientid" />
+          <FieldReference IDREF="082783f6-22ec-4c08-9408-2b51aa54ba96" Name="portalid" />
+        </ForeignFields>
+      </Relation>
+      <Relation ID="a678a61b-fcd6-43d5-9d20-d4b7488db5d5">
+        <ChildEntity IDREF="D1C5B1DC-7DED-472C-B1D5-C0184E8665FB" />
+        <ParentEntity IDREF="7085A38B-22D7-4F67-ABA2-D1E5D74750FB" />
+        <LogicalName>Table_Bottom.lookupid</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="0d9019b7-2a34-4f55-b88b-e82e4ef4f0aa" Name="LookupTypeID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="548af6ca-f242-4404-a607-1f8f521156c4" Name="lookupid" />
+        </ForeignFields>
+      </Relation>
+      <Relation ID="758dd001-aa69-4a8b-94b8-36c38d00b2e3">
+        <ChildEntity IDREF="6A51A1DE-DE91-4B1D-84D5-9997C8C9BE5B" />
+        <ParentEntity IDREF="6A51A1DE-DE91-4B1D-84D5-9997C8C9BE5B" />
+        <LogicalName>MenuItems.ParentItemID</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="6895d432-311c-4bc1-9c23-8bda538b69fa" Name="ID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="f2df78b6-b35b-49dc-838a-361a599eed84" Name="ParentItemID" />
+        </ForeignFields>
+      </Relation>
+      <Relation ID="2e71e76a-1878-46bd-8048-35f706c44515">
+        <ChildEntity IDREF="DE123CA5-9940-4676-8EE9-7D94C00CF982" />
+        <ParentEntity IDREF="ACF565DB-A188-40B7-B83B-FA65431C089D" />
+        <LogicalName>MenuItemDetailActions.ActionID</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="ce2be513-903a-4894-b515-4d2b4668a45f" Name="ActionID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="92bca904-b8d8-4ef6-8d72-2efbb779a5f8" Name="ActionID" />
+        </ForeignFields>
+      </Relation>
+      <Relation ID="173ee2c5-ad85-4c1d-aa82-3815658e87c4">
+        <ChildEntity IDREF="DE123CA5-9940-4676-8EE9-7D94C00CF982" />
+        <ParentEntity IDREF="D3AFA6FB-7176-4FF0-91BB-B34A0E55730B" />
+        <LogicalName>MenuItemDetailActions.MenuItemDetailID</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="34c015b0-b49a-4132-a9ee-d06e3ca0da7d" Name="MenuDetailID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="3695afb7-11b4-4230-b827-2972eb338139" Name="MenuItemDetailID" />
+        </ForeignFields>
+      </Relation>
+      <Relation ID="d27bc124-9e8c-4c89-a901-8b5223fbcb79">
+        <ChildEntity IDREF="D3AFA6FB-7176-4FF0-91BB-B34A0E55730B" />
+        <ParentEntity IDREF="6A51A1DE-DE91-4B1D-84D5-9997C8C9BE5B" />
+        <LogicalName>MenuItemDetail.MenuId</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="6895d432-311c-4bc1-9c23-8bda538b69fa" Name="ID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="849ff93b-3a44-4df1-98f8-d032ce8b58c0" Name="MenuId" />
+        </ForeignFields>
+      </Relation>
+      <Relation ID="6812d60b-4751-42f5-a5ab-554cee490225">
+        <ChildEntity IDREF="D3AFA6FB-7176-4FF0-91BB-B34A0E55730B" />
+        <ParentEntity IDREF="1EF0280D-DA7D-4345-8ED4-6D07F1C8820C" />
+        <LogicalName>MenuItemDetail.MenuItemsDetailTypeID</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="3585ec3f-99bb-4204-ae83-cb12cbf2f2e5" Name="MenuDetailTypeID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="f35c1141-3e4d-44da-bd01-8d6c99ce579a" Name="MenuItemsDetailTypeID" />
+        </ForeignFields>
+      </Relation>
+      <Relation ID="5cb6deda-6425-4318-acce-8cc80b8e7cbe">
+        <ChildEntity IDREF="5E1ED110-CA99-477C-B8A4-50A33DF49D96" />
+        <ParentEntity IDREF="E27DBF06-04CD-41D6-859A-35F4DCAB1BFC" />
+        <LogicalName>AppUser.PersonID</LogicalName>
+        <RelatedFields>
+          <FieldReference IDREF="46b34c23-fe58-4360-8237-08e12e4b40e7" Name="ID" />
+        </RelatedFields>
+        <Type>
+          <Usage>Parent</Usage>
+          <Ordinality>Zero</Ordinality>
+          <Cardinality>Zero</Cardinality>
+        </Type>
+        <ForeignFields>
+          <FieldReference IDREF="fd8056a7-408d-4fc1-a4c4-7b10d38d2343" Name="PersonID" />
+        </ForeignFields>
+      </Relation>
+    </Relations>
+  </Model>
+  <Settings>
+    <EntityTransform>EntityDef.xslt</EntityTransform>
+    <PackageIsSchema>true</PackageIsSchema>
+    <DefaultPackage>Data</DefaultPackage>
+    <DefaultModule>BL</DefaultModule>
+    <EntityCollectionTransform>EntityCollectionDef.xslt</EntityCollectionTransform>
+    <ConnectionString>Data Source=ALLYSON\sqlexpress;Initial Catalog=MenuMaster;Integrated Security=True</ConnectionString>
+    <CodeLanguage>TSQL</CodeLanguage>
+    <Pattern>General</Pattern>
+    <ProjectRoot>C:\Documents and Settings\user\My Documents\Visual Studio 2005\Projects\menumaster\Data\</ProjectRoot>
+    <UseCollections>true</UseCollections>
+    <ExportSingleFile>false</ExportSingleFile>
+  </Settings>
+</Project>
